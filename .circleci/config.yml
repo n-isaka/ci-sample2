@@ -1,12 +1,5 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: opensourcecobol/opensource-cobol
-    steps:
-      - checkout
-      - run: cobc HELLO.cbl
-      - run: cobc HELLO2.cbl
   test:
     docker:
       - image: opensourcecobol/opensource-cobol
@@ -17,13 +10,14 @@ jobs:
       - run: cobc -m -o HELLO2.so HELLO2.cbl
       - run: cobcrun HELLO2
       - run: cat SEQ001
+      - run: mkdir /tmp/test-results
+      - run: cp HELLO2.so SEQ001 /tmp/test-results
       # Save artifacts
-      #- store_artifacts:
-      #    path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
       #    destination: prefix
 workflows:
   version: 2
-  build_and_test:
+  test:
     jobs:
-      - build
       - test
