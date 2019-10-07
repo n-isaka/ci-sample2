@@ -10,8 +10,9 @@ jobs:
       - run: cobc -m -o HELLO2.so HELLO2.cbl
       - run: cobcrun HELLO2
       - run: cat SEQ001
+      - run: diff SEQ001 RESULT_SEQ001
       - run: mkdir /tmp/test-results
-      - run: cp HELLO2.so SEQ001 /tmp/test-results
+      - run: cp SEQ001 /tmp/test-results
       # Save artifacts
       - store_artifacts:
           path: /tmp/test-results
