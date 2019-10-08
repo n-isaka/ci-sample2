@@ -5,14 +5,15 @@ jobs:
       - image: opensourcecobol/opensource-cobol
     steps:
       - checkout
-      - run: cobc -m -o HELLO.so HELLO.cbl
-      - run: cobcrun HELLO
-      - run: cobc -m -o HELLO2.so HELLO2.cbl
-      - run: cobcrun HELLO2
-      - run: cat SEQ001
-      - run: diff SEQ001 RESULT_SEQ001
+      - run: cobc -m -o ZINKO-CNV.so ZINKO-CNV.cbl
+      - run: cobc -m -o MENSEKI-CNV.so MENSEKI-CNV.cbl
+      - run: cobc -m -o ZINKOMITSUDO.so ZINKOMITSUDO.cbl
+      - run: cobcrun ZINKO-CNV
+      - run: cobcrun MENSEKI-CNV
+      - run: cobcrun ZINKOMITSUDO
+      - run: diff TOP5.txt TOP5_RESULT.txt
       - run: mkdir /tmp/test-results
-      - run: cp SEQ001 /tmp/test-results
+      - run: cp mitsudo.csv /tmp/test-results
       # Save artifacts
       - store_artifacts:
           path: /tmp/test-results
