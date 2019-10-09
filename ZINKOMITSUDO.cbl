@@ -112,6 +112,9 @@
            OPEN OUTPUT MITSUDO-FILE.
            OPEN OUTPUT JOUI-FILE.
 
+           MOVE '"code","name","mitsudo"' TO MITUDO-DATA.
+           WRITE MITSUDO-REC.
+
            MOVE "00" TO S-STATUS.
            MOVE 0 TO CNT.
            PERFORM UNTIL S-STATUS <> "00"
@@ -130,7 +133,7 @@
                          ST-MITSUDO(9:3)  DELIMITED BY SIZE
                          INTO        MITUDO-DATA
               WRITE MITSUDO-REC
-              IF CNT <= 5 THEN
+              IF CNT < 5 THEN
                  MOVE ST-NAME TO JOUI-NAME
                  WRITE JOUI-REC
                  ADD 1 TO CNT
