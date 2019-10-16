@@ -59,7 +59,7 @@
        WORKING-STORAGE             SECTION.
        01  F-STATUS                PIC  XX.
        01  S-STATUS                PIC  XX.
-       01  ZIKOMITSUDO-DATA        PIC  9(08)V9(01).
+       01  ZIKOMITSUDO-DATA        PIC  9(08)V9(03).
        01  CNT                     PIC  9.
       ******************************************************************
        PROCEDURE                   DIVISION.
