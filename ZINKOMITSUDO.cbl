@@ -133,7 +133,7 @@
                          ST-MITSUDO(9:3)  DELIMITED BY SIZE
                          INTO        MITUDO-DATA
               WRITE MITSUDO-REC
-              IF CNT < 6 THEN
+              IF CNT < 5 THEN
                  MOVE ST-NAME TO JOUI-NAME
                  WRITE JOUI-REC
                  ADD 1 TO CNT
